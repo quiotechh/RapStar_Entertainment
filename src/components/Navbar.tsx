@@ -60,7 +60,7 @@ export default function Navbar() {
               alt="Rapstar Entertainment Logo"
               width={120}
               height={60}
-              className="h-14 w-auto object-contain"
+              className="h-45 w-auto object-contain scale-x-115"
               priority
             />
           </Link>
