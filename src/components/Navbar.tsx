@@ -4,19 +4,30 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
+const serviceLinks = [
+  { name: "Maternity Photoshoot", href: "/services/maternity-photoshoot" },
+  { name: "Baby Photoshoot", href: "/services/baby-photoshoot" },
+  { name: "Newborn Photoshoot", href: "/services/newborn-photoshoot" },
+  { name: "Family Photoshoot", href: "/services/family-photoshoot" },
+  { name: "Portfolio Shoots", href: "/services/portfolio-shoots" },
+  { name: "Events Shoots", href: "/services/events-shoots" },
+];
+
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "About Us", href: "/about" },
   { name: "Gallery", href: "/gallery" },
   { name: "Contact Us", href: "/contact" },
-  { name: "Services", href: "/services" },
 ];
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+    if (isMenuOpen) setIsMobileServicesOpen(false);
   };
 
   return (
@@ -77,6 +88,44 @@ export default function Navbar() {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-500 to-pink-500 transition-all duration-300 group-hover:w-full"></span>
               </Link>
             ))}
+
+            {/* Services Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setIsServicesOpen(true)}
+              onMouseLeave={() => setIsServicesOpen(false)}
+            >
+              <button className="text-gray-600 hover:text-black font-medium transition-colors duration-200 relative group flex items-center gap-1">
+                Services
+                <svg
+                  className={`w-4 h-4 transition-transform duration-200 ${isServicesOpen ? "rotate-180" : ""}`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-500 to-pink-500 transition-all duration-300 group-hover:w-full"></span>
+              </button>
+
+              <div
+                className={`absolute top-full left-1/2 -translate-x-1/2 pt-2 transition-all duration-200 ${
+                  isServicesOpen ? "opacity-100 visible translate-y-0" : "opacity-0 invisible -translate-y-2"
+                }`}
+              >
+                <div className="bg-white rounded-xl shadow-xl border border-gray-100 py-2 min-w-[220px]">
+                  {serviceLinks.map((service) => (
+                    <Link
+                      key={service.name}
+                      href={service.href}
+                      className="block px-5 py-2.5 text-gray-600 hover:text-black hover:bg-gray-50 transition-colors duration-150 text-sm"
+                    >
+                      {service.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* WhatsApp Button (Right on both desktop and mobile) */}
@@ -101,7 +150,7 @@ export default function Navbar() {
       {/* Mobile Menu Dropdown */}
       <div
         className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          isMenuOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
         <div className="px-4 pb-4 space-y-2 bg-gray-50">
@@ -115,6 +164,44 @@ export default function Navbar() {
               {link.name}
             </Link>
           ))}
+
+          {/* Mobile Services Accordion */}
+          <button
+            onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
+            className="flex items-center justify-between w-full px-4 py-3 text-gray-600 hover:text-black hover:bg-gray-100 rounded-lg transition-colors duration-200"
+          >
+            Services
+            <svg
+              className={`w-4 h-4 transition-transform duration-200 ${isMobileServicesOpen ? "rotate-180" : ""}`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+
+          <div
+            className={`overflow-hidden transition-all duration-300 ease-in-out ${
+              isMobileServicesOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+            }`}
+          >
+            <div className="pl-4 space-y-1">
+              {serviceLinks.map((service) => (
+                <Link
+                  key={service.name}
+                  href={service.href}
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    setIsMobileServicesOpen(false);
+                  }}
+                  className="block px-4 py-2.5 text-gray-500 hover:text-black hover:bg-gray-100 rounded-lg transition-colors duration-200 text-sm"
+                >
+                  {service.name}
+                </Link>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </nav>

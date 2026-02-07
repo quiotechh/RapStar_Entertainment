@@ -85,11 +85,13 @@ export default function HeroCarousel() {
               <div className="relative h-[85vh] min-h-150 w-full">
                 {/* Background Image with Overlay */}
                 <div className="absolute inset-0 overflow-hidden">
-                  <motion.div 
-                    className="absolute inset-0 bg-cover bg-center"
-                    style={{ 
+                  <motion.div
+                    className="absolute inset-0 bg-cover bg-center will-change-transform"
+                    style={{
                       backgroundImage: `url(${slide.image})`,
+                      transform: "translateZ(0)",
                     }}
+                    key={`bg-${index}-${currentSlide}`}
                     initial={{ scale: 1.1 }}
                     animate={{ scale: 1 }}
                     transition={{ duration: 10, ease: "easeOut" }}
@@ -100,8 +102,8 @@ export default function HeroCarousel() {
                   <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent" />
                   
                   {/* Decorative Elements */}
-                  <div className="absolute top-0 right-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
-                  <div className="absolute bottom-0 left-0 w-96 h-96 bg-violet-600/10 rounded-full blur-3xl" />
+                  <div className="absolute top-0 right-0 w-96 h-96 bg-purple-500/10 rounded-full blur-2xl will-change-transform" />
+                  <div className="absolute bottom-0 left-0 w-96 h-96 bg-violet-600/10 rounded-full blur-2xl will-change-transform" />
                 </div>
 
                 {/* Content */}
@@ -109,45 +111,49 @@ export default function HeroCarousel() {
                   <div className="container mx-auto px-4 md:px-8 max-w-7xl">
                     <div className="max-w-2xl space-y-6">
                       {/* Decorative Line */}
-                      <motion.div 
-                        className="w-20 h-0.5 bg-linear-to-r from-violet-500 to-purple-600 shadow-lg shadow-purple-500/50"
+                      <motion.div
+                        key={`line-${currentSlide}`}
+                        className="w-20 h-0.5 bg-linear-to-r from-violet-500 to-purple-600 shadow-lg shadow-purple-500/50 will-change-[opacity]"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.3, duration: 0.8 }}
                       />
-                      
+
                       {/* Title */}
-                      <motion.h1 
-                        className="text-5xl md:text-7xl lg:text-8xl font-light text-white leading-tight tracking-wide"
+                      <motion.h1
+                        key={`title-${currentSlide}`}
+                        className="text-5xl md:text-7xl lg:text-8xl font-light text-white leading-tight tracking-wide will-change-[transform,opacity]"
                         style={{
                           textShadow: '0 2px 20px rgba(0, 0, 0, 0.3), 0 4px 40px rgba(0, 0, 0, 0.2)'
                         }}
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.4, duration: 1, ease: "easeOut" }}
+                        transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
                       >
                         {slide.title}
                       </motion.h1>
-                      
+
                       {/* Subtitle */}
-                      <motion.p 
-                        className="text-lg md:text-xl lg:text-2xl text-white/90 font-light max-w-xl leading-relaxed"
+                      <motion.p
+                        key={`sub-${currentSlide}`}
+                        className="text-lg md:text-xl lg:text-2xl text-white/90 font-light max-w-xl leading-relaxed will-change-[transform,opacity]"
                         style={{
                           textShadow: '0 2px 20px rgba(0, 0, 0, 0.3), 0 4px 40px rgba(0, 0, 0, 0.2)'
                         }}
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.6, duration: 1, ease: "easeOut" }}
+                        transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
                       >
                         {slide.subtitle}
                       </motion.p>
-                      
+
                       {/* CTA Button */}
-                      <motion.div 
-                        className="pt-4"
+                      <motion.div
+                        key={`cta-${currentSlide}`}
+                        className="pt-4 will-change-[transform,opacity]"
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.8, duration: 1, ease: "easeOut" }}
+                        transition={{ delay: 0.6, duration: 0.8, ease: "easeOut" }}
                       >
                         <Button 
                           size="lg"
@@ -207,8 +213,8 @@ export default function HeroCarousel() {
         </CarouselContent>
         
         {/* Navigation Arrows */}
-        <CarouselPrevious className="left-4 md:left-8 bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-violet-600/30 hover:border-violet-400/50 hover:text-white transition-all duration-300 w-12 h-12 md:w-14 md:h-14" />
-        <CarouselNext className="right-4 md:right-8 bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-violet-600/30 hover:border-violet-400/50 hover:text-white transition-all duration-300 w-12 h-12 md:w-14 md:h-14" />
+        <CarouselPrevious className="left-4 md:left-8 bg-black/30 border-white/20 text-white hover:bg-violet-600/30 hover:border-violet-400/50 hover:text-white transition-colors duration-300 w-12 h-12 md:w-14 md:h-14" />
+        <CarouselNext className="right-4 md:right-8 bg-black/30 border-white/20 text-white hover:bg-violet-600/30 hover:border-violet-400/50 hover:text-white transition-colors duration-300 w-12 h-12 md:w-14 md:h-14" />
       </Carousel>
     </div>
   );
