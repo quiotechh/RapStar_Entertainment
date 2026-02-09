@@ -4,6 +4,7 @@ import ServicesSection from "@/components/Sevices";
 import TestimonialsSection from "@/components/Testimonials";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import CallToAction from "@/components/CallToAction";
+import HomeGallerySection from "@/components/GallerySection";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
     <HeroCarousel />
     <WelcomeSection />
     <ServicesSection />
+    <HomeGallerySection />
     <TestimonialsSection />
     <WhyChooseUs />
     <CallToAction />
