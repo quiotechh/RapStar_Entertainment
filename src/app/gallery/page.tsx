@@ -1,9 +1,10 @@
 "use client";
 
 import * as React from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import { X, ZoomIn, Filter, Grid3x3, LayoutGrid, Rows } from "lucide-react";
 import Image from "next/image";
+import { useRef } from "react";
 
 interface GalleryImage {
   id: number;
@@ -17,21 +18,21 @@ const galleryImages: GalleryImage[] = [
   // Maternity
   {
     id: 1,
-    src: "https://images.unsplash.com/photo-1493894473891-10fc1e5dbd22?w=800&h=1000&fit=crop",
+    src: "/services/maternity/maternity1.jpg",
     alt: "Maternity 1",
     category: "maternity",
     aspect: "portrait",
   },
   {
     id: 2,
-    src: "https://images.unsplash.com/photo-1493882657176-db2a2e57c3c8?w=800&h=1000&fit=crop",
+    src: "/services/maternity/maternity2.jpg",
     alt: "Maternity 2",
     category: "maternity",
     aspect: "portrait",
   },
   {
     id: 3,
-    src: "https://images.unsplash.com/photo-1578842196942-a883b03b0f05?w=1200&h=800&fit=crop",
+    src: "/services/maternity/maternity3.jpg",
     alt: "Maternity 3",
     category: "maternity",
     aspect: "landscape",
@@ -40,21 +41,21 @@ const galleryImages: GalleryImage[] = [
   // Newborn
   {
     id: 4,
-    src: "https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=800&h=1000&fit=crop",
+    src: "/services/newborn/newborn1.jpeg",
     alt: "Newborn 1",
     category: "newborn",
     aspect: "portrait",
   },
   {
     id: 5,
-    src: "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=800&h=800&fit=crop",
+    src: "/services/newborn/newborn2.jpeg",
     alt: "Newborn 2",
     category: "newborn",
     aspect: "square",
   },
   {
     id: 6,
-    src: "https://images.unsplash.com/photo-1519689373023-dd07c7988603?w=800&h=1000&fit=crop",
+    src: "/services/newborn/newborn3.jpeg",
     alt: "Newborn 3",
     category: "newborn",
     aspect: "portrait",
@@ -63,21 +64,21 @@ const galleryImages: GalleryImage[] = [
   // Baby
   {
     id: 7,
-    src: "https://images.unsplash.com/photo-1566004100631-35d015d6a491?w=800&h=1000&fit=crop",
+    src: "/services/baby/baby1.jpeg",
     alt: "Baby 1",
     category: "baby",
     aspect: "portrait",
   },
   {
     id: 8,
-    src: "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=1200&h=800&fit=crop",
+    src: "/services/baby/baby2.jpeg",
     alt: "Baby 2",
     category: "baby",
     aspect: "landscape",
   },
   {
     id: 9,
-    src: "https://images.unsplash.com/photo-1578842196942-a883b03b0f05?w=800&h=800&fit=crop",
+    src: "/services/baby/baby photoshoot.jpeg",
     alt: "Baby 3",
     category: "baby",
     aspect: "square",
@@ -86,44 +87,44 @@ const galleryImages: GalleryImage[] = [
   // Cake Smash
   {
     id: 10,
-    src: "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=800&h=1000&fit=crop",
+    src: "/services/newborn/newborn.jpeg",
     alt: "Cake Smash 1",
-    category: "cake-smash",
+    category: "newborn",
     aspect: "portrait",
   },
   {
     id: 11,
-    src: "https://images.unsplash.com/photo-1558898479-33c0057a5d12?w=800&h=800&fit=crop",
+    src: "/services/portfolio/portfolio.jpg",
     alt: "Cake Smash 2",
-    category: "cake-smash",
+    category: "portfolio",
     aspect: "square",
   },
   {
     id: 12,
-    src: "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=1200&h=800&fit=crop",
+    src: "/services/portfolio/portfolio1.jpg",
     alt: "Cake Smash 3",
-    category: "cake-smash",
+    category: "portfolio",
     aspect: "landscape",
   },
 
   // Family
   {
     id: 13,
-    src: "https://images.unsplash.com/photo-1511895426328-dc8714191300?w=800&h=1000&fit=crop",
+    src: "/services/family/family1.jpg",
     alt: "Family 1",
     category: "family",
     aspect: "portrait",
   },
   {
     id: 14,
-    src: "https://images.unsplash.com/photo-1543699539-33f54bcee410?w=1200&h=800&fit=crop",
+    src: "/services/family/family2.jpg",
     alt: "Family 2",
     category: "family",
     aspect: "landscape",
   },
   {
     id: 15,
-    src: "https://images.unsplash.com/photo-1558898479-33c0057a5d12?w=800&h=800&fit=crop",
+    src: "/services/family/family3.webp",
     alt: "Family 3",
     category: "family",
     aspect: "square",
@@ -132,21 +133,21 @@ const galleryImages: GalleryImage[] = [
   // More images
   {
     id: 16,
-    src: "https://images.unsplash.com/photo-1493894473891-10fc1e5dbd22?w=1200&h=800&fit=crop",
+    src: "/services/maternity/maternity7.webp",
     alt: "Maternity 4",
     category: "maternity",
     aspect: "landscape",
   },
   {
     id: 17,
-    src: "https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=800&h=800&fit=crop",
+    src: "/services/newborn/new born.webp",
     alt: "Newborn 4",
     category: "newborn",
     aspect: "square",
   },
   {
     id: 18,
-    src: "https://images.unsplash.com/photo-1566004100631-35d015d6a491?w=800&h=1000&fit=crop",
+    src: "/services/baby/baby2.jpeg",
     alt: "Baby 4",
     category: "baby",
     aspect: "portrait",
@@ -169,6 +170,9 @@ export default function GalleryPage() {
   const [selectedImage, setSelectedImage] = React.useState<number | null>(null);
   const [layout, setLayout] = React.useState<LayoutType>("masonry");
   const [isFilterOpen, setIsFilterOpen] = React.useState(false);
+  
+  const headerRef = useRef(null);
+  const isHeaderInView = useInView(headerRef, { once: true, margin: "-100px" });
 
   const filteredImages =
     selectedCategory === "all"
@@ -228,46 +232,85 @@ export default function GalleryPage() {
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-b from-white via-purple-50/20 to-white">
+    <div className="min-h-screen bg-black">
       {/* Hero Section */}
       <section className="relative py-20 md:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-linear-to-br from-violet-100/50 to-purple-100/50" />
+        <div className="absolute inset-0 bg-linear-to-br from-black via-purple-950 to-black" />
 
-        {/* Animated background elements */}
-        <div className="absolute top-20 right-20 w-72 h-72 bg-violet-300/20 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-20 left-20 w-96 h-96 bg-purple-300/20 rounded-full blur-3xl animate-pulse" />
+        {/* Animated background orbs */}
+        <motion.div
+          className="absolute top-20 right-20 w-72 h-72 bg-violet-500/20 rounded-full blur-3xl"
+          animate={{
+            scale: [1, 1.3, 1],
+            opacity: [0.3, 0.6, 0.3],
+            x: [0, 50, 0],
+            y: [0, 30, 0],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute bottom-20 left-20 w-96 h-96 bg-purple-400/20 rounded-full blur-3xl"
+          animate={{
+            scale: [1, 1.4, 1],
+            opacity: [0.2, 0.5, 0.2],
+            x: [0, -50, 0],
+            y: [0, -30, 0],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1,
+          }}
+        />
 
         <div className="container mx-auto px-4 md:px-8 max-w-7xl relative z-10">
           <motion.div
+            ref={headerRef}
             className="text-center"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 40 }}
+            animate={isHeaderInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="h-px w-16 bg-linear-to-r from-transparent via-violet-600 to-transparent mx-auto mb-6" />
+            <motion.div
+              className="h-px w-16 bg-linear-to-r from-transparent via-purple-400 to-transparent mx-auto mb-6"
+              animate={{
+                scaleX: [1, 1.5, 1],
+                opacity: [0.5, 1, 0.5],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
 
             <motion.h1
-              className="text-5xl md:text-7xl lg:text-8xl font-light text-gray-900 mb-6"
+              className="text-5xl md:text-7xl lg:text-8xl font-light text-white mb-6"
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              animate={isHeaderInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ delay: 0.2, duration: 0.8 }}
             >
               Our Portfolio
             </motion.h1>
 
             <motion.p
-              className="text-xl md:text-2xl text-violet-600 italic font-light mb-4"
+              className="text-xl md:text-2xl text-purple-400 italic font-light mb-4"
               initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              animate={isHeaderInView ? { opacity: 1 } : { opacity: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
             >
               Moments Captured, Memories Treasured
             </motion.p>
 
             <motion.p
-              className="text-lg text-gray-600 max-w-3xl mx-auto"
+              className="text-lg text-gray-400 max-w-3xl mx-auto"
               initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              animate={isHeaderInView ? { opacity: 1 } : { opacity: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
             >
               Explore our collection of beautiful maternity, newborn, baby, and
@@ -278,14 +321,14 @@ export default function GalleryPage() {
       </section>
 
       {/* Filters & Layout Controls */}
-      <div className="sticky top-0 z-40 bg-white/80 backdrop-blur-lg border-b border-gray-200 shadow-sm">
+      <div className="sticky top-20 z-40 bg-gray-900/80 backdrop-blur-lg border-b border-purple-500/20 shadow-lg shadow-purple-500/10">
         <div className="container mx-auto px-4 md:px-8 max-w-7xl py-4">
           <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
             {/* Category Filters */}
             <div className="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0">
               <motion.button
                 onClick={() => setIsFilterOpen(!isFilterOpen)}
-                className="md:hidden flex items-center gap-2 px-4 py-2 bg-violet-100 text-violet-700 rounded-full"
+                className="md:hidden flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-full"
                 whileTap={{ scale: 0.95 }}
               >
                 <Filter className="w-4 h-4" />
@@ -295,19 +338,22 @@ export default function GalleryPage() {
               <div
                 className={`${isFilterOpen ? "flex" : "hidden"} md:flex flex-wrap gap-2`}
               >
-                {categories.map((cat) => (
+                {categories.map((cat, index) => (
                   <motion.button
                     key={cat.id}
                     onClick={() => {
                       setSelectedCategory(cat.id);
                       setIsFilterOpen(false);
                     }}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: index * 0.05 }}
                     className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 whitespace-nowrap ${
                       selectedCategory === cat.id
-                        ? "bg-linear-to-r from-violet-600 to-purple-600 text-white shadow-lg shadow-violet-500/30"
-                        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                        ? "bg-linear-to-r from-purple-600 to-violet-600 text-white shadow-lg shadow-purple-500/50"
+                        : "bg-gray-800 text-gray-300 hover:bg-gray-700 border border-purple-500/20"
                     }`}
-                    whileHover={{ scale: 1.05 }}
+                    whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.95 }}
                   >
                     <span className="mr-2">{cat.icon}</span>
@@ -319,7 +365,7 @@ export default function GalleryPage() {
 
             {/* Layout Controls */}
             <div className="flex items-center gap-2">
-              <span className="text-sm text-gray-600 mr-2 hidden md:inline">
+              <span className="text-sm text-gray-400 mr-2 hidden md:inline">
                 View:
               </span>
               {[
@@ -344,10 +390,10 @@ export default function GalleryPage() {
                   onClick={() => setLayout(layoutOption.type)}
                   className={`p-2 rounded-lg transition-all duration-300 ${
                     layout === layoutOption.type
-                      ? "bg-violet-600 text-white"
-                      : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                      ? "bg-purple-600 text-white shadow-lg shadow-purple-500/50"
+                      : "bg-gray-800 text-gray-400 hover:bg-gray-700 border border-purple-500/20"
                   }`}
-                  whileHover={{ scale: 1.1 }}
+                  whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.9 }}
                   title={layoutOption.label}
                 >
@@ -360,8 +406,35 @@ export default function GalleryPage() {
       </div>
 
       {/* Gallery Grid */}
-      <section className="py-12 md:py-20">
-        <div className="container mx-auto px-4 md:px-8 max-w-7xl">
+      <section className="py-12 md:py-20 bg-linear-to-b from-black via-gray-900 to-black relative overflow-hidden">
+        {/* Background particles */}
+        <motion.div
+          className="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-600/10 rounded-full blur-3xl"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.1, 0.2, 0.1],
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-violet-600/10 rounded-full blur-3xl"
+          animate={{
+            scale: [1, 1.3, 1],
+            opacity: [0.1, 0.25, 0.1],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2,
+          }}
+        />
+
+        <div className="container mx-auto px-4 md:px-8 max-w-7xl relative z-10">
           <AnimatePresence mode="wait">
             <motion.div
               key={`${selectedCategory}-${layout}`}
@@ -389,7 +462,7 @@ export default function GalleryPage() {
                   whileInView={{ opacity: 1, scale: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{
-                    delay: index * 0.1,
+                    delay: index * 0.05,
                     duration: 0.6,
                     ease: [0.25, 0.46, 0.45, 0.94],
                   }}
@@ -403,7 +476,7 @@ export default function GalleryPage() {
                   />
 
                   {/* Overlay */}
-                  <motion.div className="absolute inset-0 bg-linear-to-t from-violet-900/90 via-purple-600/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-6">
+                  <motion.div className="absolute inset-0 bg-linear-to-t from-purple-900/90 via-purple-600/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-6">
                     <div className="text-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                       <motion.div
                         className="bg-white/20 backdrop-blur-sm rounded-full p-3 inline-block mb-3"
@@ -418,8 +491,11 @@ export default function GalleryPage() {
                     </div>
                   </motion.div>
 
-                  {/* Border effect */}
-                  <div className="absolute inset-0 border-2 border-transparent group-hover:border-violet-400 transition-all duration-300 rounded-2xl" />
+                  {/* Border effect with glow */}
+                  <div className="absolute inset-0 border-2 border-transparent group-hover:border-purple-400 group-hover:shadow-lg group-hover:shadow-purple-500/50 transition-all duration-300 rounded-2xl" />
+                  
+                  {/* Shimmer effect */}
+                  <div className="absolute inset-0 -left-full group-hover:left-full bg-linear-to-r from-transparent via-white/10 to-transparent transition-all duration-1000 ease-in-out" />
                 </motion.div>
               ))}
             </motion.div>
@@ -459,7 +535,7 @@ export default function GalleryPage() {
               >
                 {/* Close Button */}
                 <motion.button
-                  className="absolute top-4 right-4 md:top-8 md:right-8 text-white hover:text-violet-400 transition-colors z-10"
+                  className="absolute top-4 right-4 md:top-8 md:right-8 text-white hover:text-purple-400 transition-colors z-10 bg-gray-900/50 backdrop-blur-sm rounded-full p-2"
                   whileHover={{ scale: 1.1, rotate: 90 }}
                   whileTap={{ scale: 0.9 }}
                   onClick={closeLightbox}
@@ -468,53 +544,53 @@ export default function GalleryPage() {
                 </motion.button>
 
                 {/* Navigation Buttons */}
-                <button
-                  className="absolute left-4 text-white hover:text-violet-400 transition-colors"
+                <motion.button
+                  className="absolute left-4 text-white hover:text-purple-400 transition-colors bg-gray-900/50 backdrop-blur-sm rounded-full p-3"
+                  whileHover={{ scale: 1.1, x: -5 }}
+                  whileTap={{ scale: 0.9 }}
                   onClick={(e) => {
                     e.stopPropagation();
                     goToPrevious();
                   }}
                 >
-                  <motion.div whileHover={{ x: -5, scale: 1.2 }}>
-                    <svg
-                      className="w-10 h-10"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M15 19l-7-7 7-7"
-                      />
-                    </svg>
-                  </motion.div>
-                </button>
+                  <svg
+                    className="w-10 h-10"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M15 19l-7-7 7-7"
+                    />
+                  </svg>
+                </motion.button>
 
-                <button
-                  className="absolute right-4 text-white hover:text-violet-400 transition-colors"
+                <motion.button
+                  className="absolute right-4 text-white hover:text-purple-400 transition-colors bg-gray-900/50 backdrop-blur-sm rounded-full p-3"
+                  whileHover={{ scale: 1.1, x: 5 }}
+                  whileTap={{ scale: 0.9 }}
                   onClick={(e) => {
                     e.stopPropagation();
                     goToNext();
                   }}
                 >
-                  <motion.div whileHover={{ x: 5, scale: 1.2 }}>
-                    <svg
-                      className="w-10 h-10"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </motion.div>
-                </button>
+                  <svg
+                    className="w-10 h-10"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </motion.button>
 
                 {/* Image */}
                 <motion.div
@@ -529,7 +605,7 @@ export default function GalleryPage() {
                     alt={currentImage.alt}
                     width={1200}
                     height={1500}
-                    className="max-w-full max-h-[85vh] w-auto h-auto object-contain rounded-lg"
+                    className="max-w-full max-h-[85vh] w-auto h-auto object-contain rounded-lg shadow-2xl shadow-purple-500/20"
                     unoptimized
                   />
                 </motion.div>
