@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import {
   PartyPopper,
@@ -97,12 +98,12 @@ const faqs = [
 
 export default function EventsShootsPage() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-black">
       {/* Hero Section */}
       <section className="relative py-24 sm:py-32 md:py-40 overflow-hidden">
-        <div className="absolute inset-0 bg-linear-to-br from-violet-900 via-purple-800 to-violet-950" />
-        <div className="absolute top-20 right-0 w-72 h-72 bg-violet-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 left-0 w-80 h-80 bg-purple-400/10 rounded-full blur-3xl" />
+        <div className="absolute inset-0 bg-linear-to-br from-black via-purple-950 to-black" />
+        <div className="absolute top-20 right-0 w-72 h-72 bg-violet-500/20 rounded-full blur-3xl" />
+        <div className="absolute bottom-10 left-0 w-80 h-80 bg-purple-400/20 rounded-full blur-3xl" />
 
         <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
           <motion.div
@@ -111,13 +112,13 @@ export default function EventsShootsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <p className="text-violet-300 font-medium tracking-widest uppercase text-sm mb-4">
+            <p className="text-purple-300 font-medium tracking-widest uppercase text-sm mb-4">
               Our Services
             </p>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-white mb-6 tracking-wide">
               EVENTS PHOTOGRAPHY
             </h1>
-            <p className="text-base sm:text-lg md:text-xl text-violet-200 max-w-3xl mx-auto font-light leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-purple-200 max-w-3xl mx-auto font-light leading-relaxed">
               Professional event photography that captures the energy, emotion,
               and unforgettable moments of your special occasions — so you can
               relive them forever.
@@ -127,8 +128,11 @@ export default function EventsShootsPage() {
       </section>
 
       {/* About the Service */}
-      <section className="py-16 sm:py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-4 md:px-8">
+      <section className="py-16 sm:py-20 md:py-28 bg-linear-to-b from-black via-gray-900 to-black relative overflow-hidden">
+        <div className="absolute top-10 right-10 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-10 left-10 w-80 h-80 bg-violet-600/10 rounded-full blur-3xl" />
+
+        <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
           <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, x: -40 }}
@@ -137,13 +141,14 @@ export default function EventsShootsPage() {
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
               <div className="relative">
-                <div className="absolute top-3 -right-3 md:top-4 md:-right-4 w-full h-full border-2 border-violet-300 rounded-2xl" />
-                <div className="relative aspect-4/5 rounded-2xl overflow-hidden shadow-2xl z-10">
-                  <div className="absolute inset-0 bg-linear-to-br from-violet-100 to-purple-200 flex items-center justify-center">
-                    <span className="text-violet-400 text-sm font-medium tracking-wide">
-                      Event Photo Here
-                    </span>
-                  </div>
+                <div className="absolute top-3 -right-3 md:top-4 md:-right-4 w-full h-full border-2 border-purple-500/40 rounded-2xl" />
+                <div className="relative aspect-4/5 rounded-2xl overflow-hidden shadow-2xl shadow-purple-500/20 z-10 border border-purple-500/30">
+                  <Image
+                    src="/images/events/events-hero.jpg"
+                    alt="Events photoshoot"
+                    fill
+                    className="object-cover"
+                  />
                 </div>
               </div>
             </motion.div>
@@ -156,20 +161,20 @@ export default function EventsShootsPage() {
               className="space-y-6"
             >
               <div className="space-y-2">
-                <p className="text-violet-600 font-medium tracking-widest uppercase text-sm">
+                <p className="text-purple-400 font-medium tracking-widest uppercase text-sm">
                   Every Celebration Deserves
                 </p>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-gray-900 leading-tight">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-white leading-tight">
                   Moments Worth{" "}
-                  <span className="font-semibold text-violet-700">
+                  <span className="font-semibold text-purple-400">
                     Remembering
                   </span>
                 </h2>
               </div>
 
-              <div className="w-16 h-0.5 bg-linear-to-r from-violet-500 to-purple-600" />
+              <div className="w-16 h-0.5 bg-linear-to-r from-purple-500 to-violet-600" />
 
-              <div className="space-y-4 text-gray-600 leading-relaxed text-base md:text-lg">
+              <div className="space-y-4 text-gray-300 leading-relaxed text-base md:text-lg">
                 <p>
                   Events are filled with fleeting moments — the shared
                   laughter, the tearful toasts, the dance floor energy, the
@@ -186,7 +191,7 @@ export default function EventsShootsPage() {
 
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-violet-600 hover:bg-violet-700 text-white font-medium rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-violet-500/30 hover:scale-105 text-sm sm:text-base"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-linear-to-r from-purple-600 to-violet-600 hover:from-purple-700 hover:to-violet-700 text-white font-medium rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/30 hover:scale-105 text-sm sm:text-base"
               >
                 Book Your Event
                 <ArrowRight className="w-4 h-4" />
@@ -197,8 +202,11 @@ export default function EventsShootsPage() {
       </section>
 
       {/* Highlights */}
-      <section className="py-16 sm:py-20 md:py-28 bg-linear-to-b from-white via-violet-50/30 to-white">
-        <div className="max-w-7xl mx-auto px-4 md:px-8">
+      <section className="py-16 sm:py-20 md:py-28 bg-linear-to-b from-black via-gray-900 to-black relative overflow-hidden">
+        <div className="absolute top-20 right-10 w-72 h-72 bg-purple-600/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 left-10 w-96 h-96 bg-violet-600/10 rounded-full blur-3xl" />
+
+        <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
           <motion.div
             className="text-center mb-12 md:mb-16"
             initial={{ opacity: 0, y: 30 }}
@@ -206,11 +214,11 @@ export default function EventsShootsPage() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
           >
-            <div className="h-px w-16 bg-linear-to-r from-transparent via-violet-600 to-transparent mx-auto mb-6" />
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-gray-900 mb-4 tracking-wide">
+            <div className="h-px w-16 bg-linear-to-r from-transparent via-purple-600 to-transparent mx-auto mb-6" />
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white mb-4 tracking-wide">
               THE EXPERIENCE
             </h2>
-            <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto font-light">
+            <p className="text-base md:text-lg text-gray-400 max-w-2xl mx-auto font-light">
               Comprehensive event coverage so you can celebrate while we capture
               every moment.
             </p>
@@ -224,15 +232,15 @@ export default function EventsShootsPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group p-6 md:p-8 rounded-2xl border border-gray-100 hover:border-violet-200 bg-white hover:shadow-xl hover:shadow-violet-100/50 transition-all duration-500 hover:-translate-y-2"
+                className="group p-6 md:p-8 rounded-2xl border border-purple-500/20 hover:border-purple-400/50 bg-gray-900 hover:shadow-xl hover:shadow-purple-500/30 transition-all duration-500 hover:-translate-y-2"
               >
-                <div className="w-12 h-12 rounded-xl bg-violet-50 flex items-center justify-center mb-5 group-hover:bg-violet-100 transition-colors duration-300">
-                  <item.icon className="w-6 h-6 text-violet-600" />
+                <div className="w-12 h-12 rounded-xl bg-purple-900/40 flex items-center justify-center mb-5 group-hover:bg-purple-800/50 transition-colors duration-300">
+                  <item.icon className="w-6 h-6 text-purple-400" />
                 </div>
-                <h3 className="text-lg md:text-xl font-medium text-gray-900 mb-2 group-hover:text-violet-700 transition-colors duration-300">
+                <h3 className="text-lg md:text-xl font-medium text-white mb-2 group-hover:text-purple-400 transition-colors duration-300">
                   {item.title}
                 </h3>
-                <p className="text-gray-500 font-light leading-relaxed text-sm md:text-base">
+                <p className="text-gray-400 font-light leading-relaxed text-sm md:text-base">
                   {item.description}
                 </p>
               </motion.div>
@@ -242,8 +250,10 @@ export default function EventsShootsPage() {
       </section>
 
       {/* Event Types */}
-      <section className="py-16 sm:py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-4 md:px-8">
+      <section className="py-16 sm:py-20 md:py-28 bg-linear-to-b from-black via-gray-900 to-black relative overflow-hidden">
+        <div className="absolute top-10 right-10 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl" />
+
+        <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
           <motion.div
             className="text-center mb-12 md:mb-16"
             initial={{ opacity: 0, y: 30 }}
@@ -251,11 +261,11 @@ export default function EventsShootsPage() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
           >
-            <div className="h-px w-16 bg-linear-to-r from-transparent via-violet-600 to-transparent mx-auto mb-6" />
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-gray-900 mb-4 tracking-wide">
+            <div className="h-px w-16 bg-linear-to-r from-transparent via-purple-600 to-transparent mx-auto mb-6" />
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white mb-4 tracking-wide">
               EVENTS WE COVER
             </h2>
-            <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto font-light">
+            <p className="text-base md:text-lg text-gray-400 max-w-2xl mx-auto font-light">
               From intimate gatherings to grand celebrations, we bring our
               expertise to every occasion.
             </p>
@@ -269,15 +279,15 @@ export default function EventsShootsPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group relative p-8 md:p-10 rounded-2xl border border-gray-100 hover:border-violet-200 bg-white hover:shadow-xl hover:shadow-violet-100/50 transition-all duration-500 hover:-translate-y-2"
+                className="group relative p-8 md:p-10 rounded-2xl border border-purple-500/20 hover:border-purple-400/50 bg-gray-900 hover:shadow-xl hover:shadow-purple-500/30 transition-all duration-500 hover:-translate-y-2"
               >
-                <h3 className="text-xl md:text-2xl font-medium text-gray-900 mb-3 group-hover:text-violet-700 transition-colors duration-300">
+                <h3 className="text-xl md:text-2xl font-medium text-white mb-3 group-hover:text-purple-400 transition-colors duration-300">
                   {type.title}
                 </h3>
-                <p className="text-gray-500 font-light leading-relaxed">
+                <p className="text-gray-400 font-light leading-relaxed">
                   {type.description}
                 </p>
-                <div className="absolute bottom-0 left-8 right-8 h-0.5 bg-linear-to-r from-violet-500 to-purple-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left rounded-full" />
+                <div className="absolute bottom-0 left-8 right-8 h-0.5 bg-linear-to-r from-purple-500 to-violet-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left rounded-full" />
               </motion.div>
             ))}
           </div>
@@ -285,8 +295,10 @@ export default function EventsShootsPage() {
       </section>
 
       {/* What's Included */}
-      <section className="py-16 sm:py-20 md:py-28 bg-linear-to-b from-white via-violet-50/30 to-white">
-        <div className="max-w-7xl mx-auto px-4 md:px-8">
+      <section className="py-16 sm:py-20 md:py-28 bg-linear-to-b from-black via-gray-900 to-black relative overflow-hidden">
+        <div className="absolute bottom-10 left-10 w-80 h-80 bg-violet-600/10 rounded-full blur-3xl" />
+
+        <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
           <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, x: -40 }}
@@ -296,23 +308,23 @@ export default function EventsShootsPage() {
               className="space-y-6"
             >
               <div className="space-y-2">
-                <p className="text-violet-600 font-medium tracking-widest uppercase text-sm">
+                <p className="text-purple-400 font-medium tracking-widest uppercase text-sm">
                   Coverage Details
                 </p>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-gray-900 leading-tight">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-white leading-tight">
                   What&apos;s{" "}
-                  <span className="font-semibold text-violet-700">
+                  <span className="font-semibold text-purple-400">
                     Included
                   </span>
                 </h2>
               </div>
-              <div className="w-16 h-0.5 bg-linear-to-r from-violet-500 to-purple-600" />
+              <div className="w-16 h-0.5 bg-linear-to-r from-purple-500 to-violet-600" />
 
               <ul className="space-y-3">
                 {includes.map((item) => (
                   <li key={item} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-violet-600 mt-0.5 shrink-0" />
-                    <span className="text-gray-600 font-light text-sm sm:text-base">
+                    <CheckCircle2 className="w-5 h-5 text-purple-400 mt-0.5 shrink-0" />
+                    <span className="text-gray-300 font-light text-sm sm:text-base">
                       {item}
                     </span>
                   </li>
@@ -327,13 +339,14 @@ export default function EventsShootsPage() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <div className="relative">
-                <div className="absolute top-3 -left-3 md:top-4 md:-left-4 w-full h-full border-2 border-violet-300 rounded-2xl" />
-                <div className="relative aspect-4/5 rounded-2xl overflow-hidden shadow-2xl z-10">
-                  <div className="absolute inset-0 bg-linear-to-br from-purple-100 to-violet-200 flex items-center justify-center">
-                    <span className="text-violet-400 text-sm font-medium tracking-wide">
-                      Event Photo Here
-                    </span>
-                  </div>
+                <div className="absolute top-3 -left-3 md:top-4 md:-left-4 w-full h-full border-2 border-purple-500/40 rounded-2xl" />
+                <div className="relative aspect-4/5 rounded-2xl overflow-hidden shadow-2xl shadow-purple-500/20 z-10 border border-purple-500/30">
+                  <Image
+                    src="/images/events/session-photo.jpg"
+                    alt="Events session"
+                    fill
+                    className="object-cover"
+                  />
                 </div>
               </div>
             </motion.div>
@@ -342,8 +355,10 @@ export default function EventsShootsPage() {
       </section>
 
       {/* Gallery */}
-      <section className="py-16 sm:py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-4 md:px-8">
+      <section className="py-16 sm:py-20 md:py-28 bg-linear-to-b from-black via-gray-900 to-black relative overflow-hidden">
+        <div className="absolute top-20 right-10 w-72 h-72 bg-purple-600/10 rounded-full blur-3xl" />
+
+        <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
           <motion.div
             className="text-center mb-12 md:mb-16"
             initial={{ opacity: 0, y: 30 }}
@@ -351,11 +366,11 @@ export default function EventsShootsPage() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
           >
-            <div className="h-px w-16 bg-linear-to-r from-transparent via-violet-600 to-transparent mx-auto mb-6" />
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-gray-900 mb-4 tracking-wide">
+            <div className="h-px w-16 bg-linear-to-r from-transparent via-purple-600 to-transparent mx-auto mb-6" />
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white mb-4 tracking-wide">
               OUR WORK
             </h2>
-            <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto font-light">
+            <p className="text-base md:text-lg text-gray-400 max-w-2xl mx-auto font-light">
               A collection of moments from events we&apos;ve had the pleasure
               of covering.
             </p>
@@ -369,14 +384,15 @@ export default function EventsShootsPage() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: item * 0.05 }}
-                className="relative aspect-square rounded-xl overflow-hidden group cursor-pointer"
+                className="relative aspect-square rounded-xl overflow-hidden group cursor-pointer border border-purple-500/20"
               >
-                <div className="absolute inset-0 bg-linear-to-br from-violet-100 to-purple-200 flex items-center justify-center">
-                  <span className="text-violet-400 text-xs sm:text-sm font-medium">
-                    Gallery Image {item}
-                  </span>
-                </div>
-                <div className="absolute inset-0 bg-violet-900/0 group-hover:bg-violet-900/40 transition-all duration-300" />
+                <Image
+                  src={`/images/events/gallery-${item}.jpg`}
+                  alt={`Events gallery image ${item}`}
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-purple-900/0 group-hover:bg-purple-900/40 transition-all duration-300" />
               </motion.div>
             ))}
           </div>
@@ -384,8 +400,10 @@ export default function EventsShootsPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-16 sm:py-20 md:py-28 bg-linear-to-b from-white via-violet-50/30 to-white">
-        <div className="max-w-4xl mx-auto px-4 md:px-8">
+      <section className="py-16 sm:py-20 md:py-28 bg-linear-to-b from-black via-gray-900 to-black relative overflow-hidden">
+        <div className="absolute bottom-10 left-10 w-80 h-80 bg-violet-600/10 rounded-full blur-3xl" />
+
+        <div className="max-w-4xl mx-auto px-4 md:px-8 relative z-10">
           <motion.div
             className="text-center mb-12 md:mb-16"
             initial={{ opacity: 0, y: 30 }}
@@ -393,8 +411,8 @@ export default function EventsShootsPage() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
           >
-            <div className="h-px w-16 bg-linear-to-r from-transparent via-violet-600 to-transparent mx-auto mb-6" />
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-gray-900 mb-4 tracking-wide">
+            <div className="h-px w-16 bg-linear-to-r from-transparent via-purple-600 to-transparent mx-auto mb-6" />
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white mb-4 tracking-wide">
               COMMON QUESTIONS
             </h2>
           </motion.div>
@@ -407,12 +425,12 @@ export default function EventsShootsPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="p-6 md:p-8 rounded-2xl border border-gray-100 hover:border-violet-200 transition-colors duration-300"
+                className="p-6 md:p-8 rounded-2xl border border-purple-500/20 hover:border-purple-400/50 bg-gray-900 transition-colors duration-300"
               >
-                <h3 className="text-lg md:text-xl font-medium text-gray-900 mb-3">
+                <h3 className="text-lg md:text-xl font-medium text-white mb-3">
                   {faq.question}
                 </h3>
-                <p className="text-gray-500 font-light leading-relaxed text-sm md:text-base">
+                <p className="text-gray-400 font-light leading-relaxed text-sm md:text-base">
                   {faq.answer}
                 </p>
               </motion.div>
@@ -423,8 +441,9 @@ export default function EventsShootsPage() {
 
       {/* CTA */}
       <section className="relative py-16 sm:py-20 md:py-28 overflow-hidden">
-        <div className="absolute inset-0 bg-linear-to-br from-violet-900 via-purple-800 to-violet-950" />
-        <div className="absolute top-20 right-0 w-72 h-72 bg-violet-500/10 rounded-full blur-3xl" />
+        <div className="absolute inset-0 bg-linear-to-br from-black via-purple-950 to-black" />
+        <div className="absolute top-20 right-0 w-72 h-72 bg-violet-500/20 rounded-full blur-3xl" />
+        <div className="absolute bottom-10 left-0 w-80 h-80 bg-purple-400/20 rounded-full blur-3xl" />
 
         <div className="max-w-4xl mx-auto px-4 md:px-8 relative z-10 text-center">
           <motion.div
@@ -433,10 +452,11 @@ export default function EventsShootsPage() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
           >
+            <div className="h-px w-16 bg-linear-to-r from-transparent via-purple-400 to-transparent mx-auto mb-8" />
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white mb-6 tracking-wide">
               HAVE AN EVENT COMING UP?
             </h2>
-            <p className="text-base md:text-lg text-violet-200 max-w-2xl mx-auto font-light leading-relaxed mb-10">
+            <p className="text-base md:text-lg text-purple-200 max-w-2xl mx-auto font-light leading-relaxed mb-10">
               Let&apos;s make sure every special moment is beautifully
               documented. Get in touch to discuss your event photography needs.
             </p>
@@ -445,7 +465,7 @@ export default function EventsShootsPage() {
                 href="https://wa.me/YOUR_PHONE_NUMBER"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-green-500 hover:bg-green-600 text-white font-medium tracking-wide rounded-full transition-all duration-300 hover:shadow-2xl hover:shadow-green-500/30 hover:scale-105 text-sm sm:text-base"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-linear-to-r from-purple-600 to-violet-600 text-white font-medium tracking-wide rounded-full transition-all duration-300 hover:from-purple-700 hover:to-violet-700 hover:shadow-2xl hover:shadow-purple-500/30 hover:scale-105 text-sm sm:text-base"
               >
                 <svg
                   className="w-5 h-5"
@@ -458,7 +478,7 @@ export default function EventsShootsPage() {
               </a>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-white/10 border border-white/30 text-white font-medium tracking-wide rounded-full transition-all duration-300 hover:bg-white/20 hover:scale-105 text-sm sm:text-base"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-white/5 border border-purple-500/30 text-white font-medium tracking-wide rounded-full backdrop-blur-lg transition-all duration-300 hover:bg-white/10 hover:scale-105 text-sm sm:text-base"
               >
                 Contact Us
               </Link>
