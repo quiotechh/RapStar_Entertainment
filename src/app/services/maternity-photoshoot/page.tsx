@@ -122,7 +122,7 @@ export default function MaternityPhotoshootPage() {
                 <div className="absolute top-3 -right-3 md:top-4 md:-right-4 w-full h-full border-2 border-purple-500/40 rounded-2xl" />
                 <div className="relative aspect-4/5 rounded-2xl overflow-hidden shadow-2xl shadow-purple-500/20 z-10 border border-purple-500/30">
                   <Image
-                    src="/images/maternity/maternity-hero.jpg"
+                    src="/services/maternity/maternity1.jpg"
                     alt="Maternity photoshoot"
                     fill
                     className="object-cover"
@@ -277,7 +277,7 @@ export default function MaternityPhotoshootPage() {
                 <div className="absolute top-3 -left-3 md:top-4 md:-left-4 w-full h-full border-2 border-purple-500/40 rounded-2xl" />
                 <div className="relative aspect-4/5 rounded-2xl overflow-hidden shadow-2xl shadow-purple-500/20 z-10 border border-purple-500/30">
                   <Image
-                    src="/images/maternity/session-photo.jpg"
+                    src="/services/maternity/maternity2.jpg"
                     alt="Maternity session"
                     fill
                     className="object-cover"
@@ -311,18 +311,25 @@ export default function MaternityPhotoshootPage() {
           </motion.div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
-            {[1, 2, 3, 4, 5, 6].map((item) => (
+            {[
+              "/services/maternity/maternity3.jpg",
+              "/services/maternity/maternity4.jpg",
+              "/services/maternity/maternity6.jpg",
+              "/services/maternity/maternity8.jpg",
+              "/services/maternity/maternity.jpeg",
+              "/services/maternity/maternity10.jpg",
+            ].map((src, index) => (
               <motion.div
-                key={item}
+                key={src}
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: item * 0.05 }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
                 className="relative aspect-square rounded-xl overflow-hidden group cursor-pointer border border-purple-500/20"
               >
                 <Image
-                  src={`/images/maternity/gallery-${item}.jpg`}
-                  alt={`Maternity gallery image ${item}`}
+                  src={src}
+                  alt={`Maternity gallery image ${index + 1}`}
                   fill
                   className="object-cover"
                 />

@@ -23,7 +23,7 @@ function Counter({
   const rounded = useTransform(count, (latest) => Math.round(latest));
   const ref = useRef<HTMLParagraphElement>(null);
   const counterRef = useRef(null);
-  const isInView = useInView(counterRef, { once: true, margin: "-100px" });
+  const isInView = useInView(counterRef, { once: true, margin: "0px" });
 
   useEffect(() => {
     if (isInView) {
@@ -44,7 +44,7 @@ function Counter({
 
   return (
     <div ref={counterRef}>
-      <p ref={ref} className="text-3xl md:text-4xl font-bold text-purple-400">
+      <p ref={ref} className="text-2xl sm:text-3xl md:text-4xl font-bold text-purple-400">
         0+
       </p>
     </div>
@@ -190,21 +190,21 @@ export default function WelcomeSection() {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: 0.7, ease: "easeOut" }}
-              className="grid grid-cols-3 gap-6 pt-4"
+              viewport={{ once: true, margin: "0px" }}
+              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+              className="grid grid-cols-3 gap-3 sm:gap-6 pt-4"
             >
-              <div className="text-center p-4 bg-gray-800/50 rounded-lg border border-purple-500/20 backdrop-blur-sm">
+              <div className="text-center p-3 sm:p-4 bg-gray-800/50 rounded-lg border border-purple-500/20 backdrop-blur-sm">
                 <Counter to={500} duration={2.5} />
-                <p className="text-sm text-gray-400 mt-1">Happy Families</p>
+                <p className="text-xs sm:text-sm text-gray-400 mt-1">Happy Families</p>
               </div>
-              <div className="text-center p-4 bg-gray-800/50 rounded-lg border border-purple-500/20 backdrop-blur-sm">
+              <div className="text-center p-3 sm:p-4 bg-gray-800/50 rounded-lg border border-purple-500/20 backdrop-blur-sm">
                 <Counter to={5} duration={2} />
-                <p className="text-sm text-gray-400 mt-1">Years Experience</p>
+                <p className="text-xs sm:text-sm text-gray-400 mt-1">Years Experience</p>
               </div>
-              <div className="text-center p-4 sm:p-8 bg-gray-800/50 rounded-lg border border-purple-500/20 backdrop-blur-sm">
+              <div className="text-center p-3 sm:p-4 bg-gray-800/50 rounded-lg border border-purple-500/20 backdrop-blur-sm">
                 <Counter to={1000} duration={2.5} />
-                <p className="text-sm text-gray-400 mt-1">Photos Delivered</p>
+                <p className="text-xs sm:text-sm text-gray-400 mt-1">Photos Delivered</p>
               </div>
             </motion.div>
           </div>

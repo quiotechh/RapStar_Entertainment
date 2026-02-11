@@ -138,7 +138,7 @@ export default function FamilyPhotoshootPage() {
                 <div className="absolute top-3 -right-3 md:top-4 md:-right-4 w-full h-full border-2 border-purple-500/40 rounded-2xl" />
                 <div className="relative aspect-4/5 rounded-2xl overflow-hidden shadow-2xl shadow-purple-500/20 z-10 border border-purple-500/30">
                   <Image
-                    src="/images/family/family-hero.jpg"
+                    src="/services/family/family1.jpg"
                     alt="Family photoshoot"
                     fill
                     className="object-cover"
@@ -276,7 +276,11 @@ export default function FamilyPhotoshootPage() {
               >
                 <div className="relative aspect-4/3 overflow-hidden border border-purple-500/20">
                   <Image
-                    src={`/images/family/session-type-${index + 1}.jpg`}
+                    src={[
+                      "/services/family/family2.jpg",
+                      "/services/family/family3.webp",
+                      "/services/family/sonakshi familyshoot.jpg",
+                    ][index]}
                     alt={type.title}
                     fill
                     className="object-cover"
@@ -344,7 +348,7 @@ export default function FamilyPhotoshootPage() {
                 <div className="absolute top-3 -left-3 md:top-4 md:-left-4 w-full h-full border-2 border-purple-500/40 rounded-2xl" />
                 <div className="relative aspect-4/5 rounded-2xl overflow-hidden shadow-2xl shadow-purple-500/20 z-10 border border-purple-500/30">
                   <Image
-                    src="/images/family/session-photo.jpg"
+                    src="/services/family/sonakshi familyshoot.jpg"
                     alt="Family session"
                     fill
                     className="object-cover"
@@ -378,18 +382,25 @@ export default function FamilyPhotoshootPage() {
           </motion.div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
-            {[1, 2, 3, 4, 5, 6].map((item) => (
+            {[
+              "/services/family/family1.jpg",
+              "/services/family/family2.jpg",
+              "/services/family/family3.webp",
+              "/services/family/family4.webp",
+              "/services/family/family5.jpg",
+              "/services/family/family6.jpg",
+            ].map((src, index) => (
               <motion.div
-                key={item}
+                key={src}
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: item * 0.05 }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
                 className="relative aspect-square rounded-xl overflow-hidden group cursor-pointer border border-purple-500/20"
               >
                 <Image
-                  src={`/images/family/gallery-${item}.jpg`}
-                  alt={`Family gallery image ${item}`}
+                  src={src}
+                  alt={`Family gallery image ${index + 1}`}
                   fill
                   className="object-cover"
                 />
