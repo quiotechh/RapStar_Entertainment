@@ -30,7 +30,7 @@ export default function HeroCarousel() {
 
   const slides: Slide[] = [
     {
-      image: "premium-cover.jpg",
+      image: "Premium-Cover.jpg",
       title: "Celebrate Your Journey",
       subtitle: "Capturing the beauty of motherhood with timeless elegance",
       cta: "Book Your Session",
@@ -208,7 +208,7 @@ export default function HeroCarousel() {
                 >
                   <div className="flex flex-col items-center gap-2">
                     <span className="text-white/70 text-sm font-light tracking-widest uppercase">
-                      Scroll
+                      
                     </span>
                     <motion.div
                       className="w-px h-12 bg-linear-to-b from-white/50 to-transparent"

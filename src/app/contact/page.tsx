@@ -90,13 +90,13 @@ export default function ContactPage() {
     {
       icon: <Instagram className="w-5 h-5" />,
       name: "Instagram",
-      link: "#",
+      link: "https://www.instagram.com/rapstarentertainments/",
       color: "hover:bg-purple-600",
     },
     {
       icon: <Facebook className="w-5 h-5" />,
       name: "Facebook",
-      link: "#",
+      link: "https://www.facebook.com/rapstarentertainments/",
       color: "hover:bg-purple-600",
     },
     {
